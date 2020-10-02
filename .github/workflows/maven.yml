@@ -29,5 +29,5 @@ jobs:
         uses: actions/upload-artifact@v2
         if: success()
         with:
-          name: Plugin JARs
+          name: HeapDumperPlugin
           path: target/*.jar

@@ -1,23 +1,27 @@
-# Example Plugin for PowerNukkit
-This is an example plugin which can also be used as template to start your own plugin.
+# HeapDumper Pluging
+This plugin adds the /heapdump command to your server, it requires the permission `heapdump` which is given
+to OP players by default.
 
-As an example I created a plugin named clone-me, it creates a clone of yourself when you run `/clone`
-and gives you a flower if you hit the clone and then despawn the clone. It also send some fancy messages.
+The command takes a memory heap dump and saves it as a file in the server's directory. The file name uses the
+current system time by default, but you can customize it by command argument.
 
-These is enough to serve as an example on how to:
-- Begin a new plugin
-- Create event listeners and handlers
-- Create custom commands
-- Format text
-- Spawn NPCs
-- Despawn NPCs
-- Detect attacks
-- Make entities invulnerable
-- Create and fill a `plugin.yml` file
-- Debug your plugin properly
+Be aware that the heap dump files are usually very big since it will dump the entire application memory in use in a single
+file, this means that if your server is using 4GB of RAM when the command is executed, the file will also take 4GB 
+in the disk space.
+
+Also be aware that heap dump files may contains sensitive information, like database connection information and
+unencrypted passwords, so never leave the dumps there.
+
+## Commands and Permissions
+
+| Command        | Permission                  | Usage                         | Description
+|----------------|-----------------------------|-------------------------------|------------------
+| /heapdump      | heapdumper.heapdump         | /heapdump <optional-filename> | Take a heap dump to analyze memory leak issues and save in the server's folder
+| /cleardump     | heapdumper.cleardump.single | /cleardump <filename>         | Deletes a specific heap dump file
+| /clearalldumps | heapdumper.cleardump.all    | /clearalldumps                | Deletes all heap dump files at once 
 
 ## Cloning and importing
-1. Just do a normal `git clone https://github.com/PowerNukkit/ExamplePlugin.git` (or the URL of your own git repository)
+1. Just do a normal `git clone https://github.com/PowerNukkit/HeapDumper-Plugin.git` (or the URL of your own git repository)
 2. Import the `pom.xml` file with your IDE, it should do the rest by itself
 
 ## Debugging
