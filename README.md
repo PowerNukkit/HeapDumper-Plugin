@@ -14,11 +14,19 @@ unencrypted passwords, so never leave the dumps there.
 
 ## Commands and Permissions
 
-| Command        | Permission                  | Usage                         | Description
-|----------------|-----------------------------|-------------------------------|------------------
-| /heapdump      | heapdumper.heapdump         | /heapdump <optional-filename> | Take a heap dump to analyze memory leak issues and save in the server's folder
-| /cleardump     | heapdumper.cleardump.single | /cleardump <filename>         | Deletes a specific heap dump file
-| /clearalldumps | heapdumper.cleardump.all    | /clearalldumps                | Deletes all heap dump files at once 
+| Command          | Permission                    | Usage                           | Description
+|------------------|-------------------------------|---------------------------------|------------------
+| `/heapdump`      | `heapdumper.heapdump`         | `/heapdump <optional-filename>` | Take a heap dump to analyze memory leak issues and save in the server's folder
+| `/cleardump`     | `heapdumper.cleardump.single` | `/cleardump <filename>`         | Deletes a specific heap dump file
+| `/clearalldumps` | `heapdumper.cleardump.all`    | `/clearalldumps`                | Deletes all heap dump files at once 
+
+## Glob Permissions
+- `heapdumper.cleardump.*` - Allows the user to run the command that clears the dumps
+  - `heapdumper.cleardump.single`
+  - `heapdumper.cleardump.all`
+- `heapdumper.*` - Allows the user to run all the heapdumper commands
+  - `heapdumper.heapdump`
+  - `heapdumper.cleardump.*`
 
 ## Cloning and importing
 1. Just do a normal `git clone https://github.com/PowerNukkit/HeapDumper-Plugin.git` (or the URL of your own git repository)

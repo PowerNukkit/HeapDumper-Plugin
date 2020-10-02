@@ -28,11 +28,15 @@ permissions:
   heapdumper.cleardump.all:
     description: "Allows the user to run the clearalldumps command"
     default: false
+  heapdumper.cleardump.*:
+    description: "Allows the user to run the command that clears the dumps"
+    default: false
+    children:
+      heapdumper.cleardump.single: true
+      heapdumper.cleardump.all: true
   heapdumper.*:
     description: "Allows the user to run all the heapdumper commands"
     default: op
     children:
       heapdumper.heapdump: true
-      heapdumper.cleardump.single: true
-      heapdumper.cleardump.all: true
-  
+      heapdumper.cleardump.*: true
